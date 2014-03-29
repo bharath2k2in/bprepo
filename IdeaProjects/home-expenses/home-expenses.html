@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Home Expenses</title>
+    <script src="static/javascript/jquery-1.11.0.min.js"></script>
+    <script src="static/javascript/home-expense.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/home-expense.css">
+</head>
+<body class="home">
+<div class="main">
+    <fieldset class="input ">
+        <input id="amount" type="text" onblur="validateAmount()" required="required" placeholder="Amount"/>
+    </fieldset>
+
+    <fieldset class="input">
+        <input id="desc" type="text" placeholder="Description"/>
+    </fieldset>
+
+    <fieldset class="input">
+        <select id="category">
+            <option value="" disabled selected style="color:grey">Category</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Gift">Gift</option>
+            <option value="Phone">Phone</option>
+            <option value="Internet">Internet</option>
+            <option value="DTH">DTH</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Personal">Personal</option>
+            <option value="Misc">Miscellaneous</option>
+        </select>
+    </fieldset>
+
+    <fieldset class="input">
+        <table class="buttons">
+            <tr>
+                <td><input id="add" type="button" value="Add"/></td>
+                <td><input id="clear" type="button" value="Clear"/></td>
+            </tr>
+        </table>
+    </fieldset>
+</div>
+
+</body>
+</html>

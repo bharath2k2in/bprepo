@@ -1,0 +1,70 @@
+.home {
+    background-image: url("../images/home.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding-top: 350px;
+}
+
+.home .main {
+    -webkit-margin-start: 400px;
+    -webkit-margin-end: 400px;
+    -moz-margin-start: 400px;
+    -moz-margin-end: 400px;
+    background-color: white;
+    left: 290px;
+    right: 200px;
+    border-radius: 10px;
+    position: relative;
+    top: -30px;
+    width: 450px;
+}
+
+.home .main .input {
+    border: none;
+}
+
+.home .main .input #amount, #desc, #category {
+    width: 95%;
+    height: 30px;
+    padding: 5px;
+    margin: 0 5px 0 5px;
+}
+
+.home .main .input #amount {
+    margin-top: 15px;
+}
+
+.home .main .input #amount, #desc, #category {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid lightblue;
+    font-style: italic;
+}
+
+.home .main .input #category {
+    width: 98%;
+    height: 40px;
+    color: grey;
+}
+
+.home .main .input #category option {
+    color: black;
+}
+
+.home .main .input .buttons #add, #clear {
+    width: 50px;
+    height: 30px;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 50%;
+    border: 3px solid lightgreen;
+}
+
+.home .main .input .buttons {
+    float: right;
+}
+
+.amountError {
+    background-color: lightpink;
+}
