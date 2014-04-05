@@ -13,7 +13,7 @@ public class DBConnectionTest {
 
     public static void main(String args[]) {
         String userName = "sa";
-        String password = "Anusha@sql01";
+        String password = "*******";
 
         String url = "jdbc:sqlserver://BHARATH-PC\\SQLEXPRESS;databaseName=Home";
 
