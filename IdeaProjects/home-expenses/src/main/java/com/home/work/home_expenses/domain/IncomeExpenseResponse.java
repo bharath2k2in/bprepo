@@ -1,38 +1,35 @@
 package com.home.work.home_expenses.domain;
 
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
- * Created by Bharath on 28-03-2014.
+ * Created by Bharath on 02-04-2014.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-public class ExpenseDetail {
+public class IncomeExpenseResponse {
 
     @XmlAttribute(required = true)
-    protected int amount;
+    private BigDecimal amount;
 
     @XmlAttribute(required = true)
-    protected String description;
+    private String description;
 
     @XmlAttribute(required = true)
-    protected String category;
+    private String category;
 
-    public ExpenseDetail() {
+    public IncomeExpenseResponse() {
     }
 
-    public int getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
