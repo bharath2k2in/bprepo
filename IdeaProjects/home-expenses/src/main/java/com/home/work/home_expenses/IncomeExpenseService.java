@@ -1,7 +1,6 @@
 package com.home.work.home_expenses;
 
 import com.home.work.home_expenses.dao.IncomeExpenseDao;
-import com.home.work.home_expenses.dao.IncomeExpenseDaoImpl;
 import com.home.work.home_expenses.domain.IncomeExpenseDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

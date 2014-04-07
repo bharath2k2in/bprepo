@@ -6,9 +6,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+
 /**
  * Created by Bharath on 02-04-2014.
  */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class IncomeExpenseResponse {
@@ -49,3 +51,4 @@ public class IncomeExpenseResponse {
         this.category = category;
     }
 }
+
