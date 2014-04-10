@@ -12,15 +12,13 @@
     <fieldset class="input ">
         <input id="amount" type="text" onblur="validateAmount()" required="required" placeholder="Amount"/>
 
-        <input name="amountType" type="radio" id="income" value="Income" onclick="showIncomeCategories()"/>
+        <input name="amountType" type="radio" id="income" value="Income"
+               checked="checked" onclick="showIncomeCategories()"/>
         <label for="income">Income</label>
         <input name="amountType" type="radio" id="expense" value="Expense" onclick="showExpenseCategories()"/>
         <label for="expense">Expense</label>
     </fieldset>
 
-    <fieldset class="input">
-        <input id="desc" type="text" placeholder="Description"/>
-    </fieldset>
 
     <fieldset class="input">
         <select id="expenseCategory" hidden="hidden">
@@ -38,13 +36,17 @@
             <option value="Personal">Personal</option>
             <option value="Misc">Miscellaneous</option>
         </select>
-        <select id="incomeCategory" hidden="hidden">
+        <select id="incomeCategory">
             <option value="" disabled selected style="color:grey">Category</option>
             <option value="Salary">Salary</option>
             <option value="Rent">Rent</option>
             <option value="Incentive">Incentive</option>
             <option value="TaxReturns">Tax Returns</option>
         </select>
+    </fieldset>
+
+    <fieldset class="input">
+        <input id="desc" type="text" placeholder="Description"/>
     </fieldset>
 
     <fieldset class="input">

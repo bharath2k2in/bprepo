@@ -56,8 +56,8 @@
 
 .home .main .input #expenseCategory, #incomeCategory {
     width: 98%;
-    height: 40px;
-    color: grey;
+    height: 45px;
+    color: darkgrey;
 }
 
 .home .main .input #expenseCategory option, #incomeCategory option {
