@@ -1,17 +1,43 @@
+var amountDiv;
+var descriptionDiv;
+var expenseCategoryDiv;
+var incomeCategoryDiv;
+var addBtn;
+var clearBtn;
+var resultMessage;
+
 $(document).ready(function () {
-    $("#amount").keypress(validateNumber);
+    amountDiv = $("#amount");
+    descriptionDiv = $("#desc");
+    expenseCategoryDiv = $("#expenseCategory");
+    incomeCategoryDiv = $("#incomeCategory");
+    addBtn = $("#add");
+    clearBtn = $("#clear");
+    resultMessage = $("#showResultMessage");
+
+    amountDiv.keypress(validateNumber);
+    amountDiv.blur(validateAmount);
+
+    $("input[name$='amountType']").click(showCategories);
+
+    addBtn.click(submitIncomeExpenseDetails);
+    clearBtn.click(clearInput);
 });
+
+function showCategories() {
+    var amountType = $("input[name$='amountType']:checked").val();
+    if (amountType === "Income") {
+        showIncomeCategories();
+    } else if (amountType === "Expense") {
+        showExpenseCategories()
+    }
+}
 
 function submitIncomeExpenseDetails() {
 
-    var amountDiv = $("#amount");
-    var descriptionDiv = $("#desc");
-    var expenseCategoryDiv = $("#expenseCategory");
-    var incomeCategoryDiv = $("#incomeCategory");
-
     var amount = parseFloat(amountDiv.val());
     var description = descriptionDiv.val();
-    var amountType = $('input[name$="amountType"]:checked').val();
+    var amountType = $("input[name$='amountType']:checked").val();
 
     var category;
 
@@ -22,7 +48,7 @@ function submitIncomeExpenseDetails() {
     }
 
     if (isNaN(amount) || category === "Category" || description.trim() === "") {
-        alert("Wrong input");
+        alert("Wrong Input");
     } else {
         $.ajax({
             url: "http://localhost:8080/home-expenses/expense/add",
@@ -34,30 +60,30 @@ function submitIncomeExpenseDetails() {
                 clearInput();
             },
             error: function (e) {
-                console.log(JSON.stringify(e));
+                alert("Error occurred while adding : " + JSON.stringify(e));
             }
         });
+    }
+}
 
-        var clearInput = function() {
-            amountDiv.val("");
-            descriptionDiv.val("");
-            if (expenseCategoryDiv.css("display") === "inline-block") {
-                expenseCategoryDiv.find('option:first').attr('selected', 'selected');
-            } else if (incomeCategoryDiv.css("display") === "inline-block") {
-                incomeCategoryDiv.find('option:first').attr('selected', 'selected');
-            }
-        }
+function clearInput() {
+    amountDiv.val("");
+    descriptionDiv.val("");
+    if (expenseCategoryDiv.css("display") === "inline-block") {
+        expenseCategoryDiv.find('option:first').attr('selected', 'selected');
+    } else if (incomeCategoryDiv.css("display") === "inline-block") {
+        incomeCategoryDiv.find('option:first').attr('selected', 'selected');
     }
 }
 
 function showIncomeCategories() {
-    $("#incomeCategory").show();
-    $("#expenseCategory").hide();
+    incomeCategoryDiv.show();
+    expenseCategoryDiv.hide();
 };
 
 function showExpenseCategories() {
-    $("#expenseCategory").show();
-    $("#incomeCategory").hide();
+    expenseCategoryDiv.show();
+    incomeCategoryDiv.hide();
 };
 
 function validateNumber(event) {
@@ -71,11 +97,12 @@ function validateNumber(event) {
 };
 
 function validateAmount() {
-    var amount = $("#amount").val();
+    var amount = amountDiv.val();
     var regex = /^[-]?[0-9,]*[.]?[0-9]*$/;
     if (!regex.test(amount)) {
-        $("#amount").addClass("amountError");
+        amountDiv.addClass("amountError");
     } else {
-        $("#amount").removeClass("amountError")
+        amountDiv.removeClass("amountError")
     }
 };
+

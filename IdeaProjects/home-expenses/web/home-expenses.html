@@ -10,12 +10,12 @@
 <body class="home">
 <div class="main">
     <fieldset class="input ">
-        <input id="amount" type="text" onblur="validateAmount()" required="required" placeholder="Amount"/>
+        <input id="amount" type="text" required="required" placeholder="Amount"/>
 
         <input name="amountType" type="radio" id="income" value="Income"
-               checked="checked" onclick="showIncomeCategories()"/>
+               checked="checked"/>
         <label for="income">Income</label>
-        <input name="amountType" type="radio" id="expense" value="Expense" onclick="showExpenseCategories()"/>
+        <input name="amountType" type="radio" id="expense" value="Expense"/>
         <label for="expense">Expense</label>
     </fieldset>
 
@@ -52,7 +52,7 @@
     <fieldset class="input">
         <table class="buttons">
             <tr>
-                <td><input id="add" type="button" value="Add" onclick="submitIncomeExpenseDetails()"/></td>
+                <td><input id="add" type="button" value="Add"/></td>
                 <td><input id="clear" type="button" value="Clear"/></td>
             </tr>
         </table>
