@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Home Expenses</title>
     <script src="static/javascript/jquery-1.11.0.min.js"></script>
+    <script src="static/javascript/jquery-ui-1.10.4.min.js"></script>
     <script src="static/javascript/home-expense.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="static/css/home-expense.css">
 </head>
 <body class="home">
@@ -22,7 +24,7 @@
 
     <fieldset class="input">
         <select id="expenseCategory" hidden="hidden">
-            <option value="" disabled selected style="color:grey">Category</option>
+            <option value="" disabled selected style="...">Category</option>
             <option value="Food">Food</option>
             <option value="Travel">Travel</option>
             <option value="Gift">Gift</option>
@@ -34,15 +36,18 @@
             <option value="EB">Electricity Bill</option>
             <option value="Gas">Gas Bill</option>
             <option value="Personal">Personal</option>
+            <option value="Medical">Medical</option>
             <option value="Misc">Miscellaneous</option>
         </select>
         <select id="incomeCategory">
-            <option value="" disabled selected style="color:grey">Category</option>
+            <option value="" disabled selected style="...">Category</option>
             <option value="Salary">Salary</option>
             <option value="Rent">Rent</option>
             <option value="Incentive">Incentive</option>
             <option value="TaxReturns">Tax Returns</option>
+            <option value="Reimbursement">Reimbursement</option>
         </select>
+        <input type="text" id="datePicker" placeholder="Date"/>
     </fieldset>
 
     <fieldset class="input">
@@ -51,7 +56,13 @@
 
     <fieldset class="input">
         <table class="buttons">
+            <colgroup>
+                <col span="1" style="width: 70%;">
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 15%;">
+            </colgroup>
             <tr>
+                <td><div id="resultMessage"/></td>
                 <td><input id="add" type="button" value="Add"/></td>
                 <td><input id="clear" type="button" value="Clear"/></td>
             </tr>

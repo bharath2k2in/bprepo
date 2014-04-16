@@ -25,7 +25,7 @@
 }
 
 .home .main .input #amount {
-    width: 50%;
+    width: 46%;
 }
 
 .home .main .input label {
@@ -33,11 +33,23 @@
     font-weight: bold;
 }
 
-.home .main .input #desc, #expenseCategory, #incomeCategory {
-    width: 95%;
+.home .main .input #income {
+    margin-left: 15px;
 }
 
-.home .main .input #amount, #desc, #expenseCategory, #incomeCategory {
+.home .main .input #expenseCategory, #incomeCategory {
+    width: 50%;
+}
+
+.home .main .input #datePicker {
+    width: 40%;
+}
+
+.home .main .input #desc {
+    width: 93%;
+}
+
+.home .main .input #amount, #desc, #expenseCategory, #incomeCategory, #datePicker {
     height: 30px;
     padding: 5px;
     margin: 0 5px 0 5px;
@@ -47,7 +59,11 @@
     margin-top: 10px;
 }
 
-.home .main .input #amount, #desc, #expenseCategory, #incomeCategory {
+.home .main .input #amount, #desc {
+    padding-left: 9px;
+}
+
+.home .main .input #amount, #desc, #expenseCategory, #incomeCategory, #datePicker {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 2px solid lightblue;
@@ -55,12 +71,7 @@
 }
 
 .home .main .input #expenseCategory, #incomeCategory {
-    width: 98%;
     height: 45px;
-    color: darkgrey;
-}
-
-.home .main .input #expenseCategory option, #incomeCategory option {
     color: black;
 }
 
@@ -75,9 +86,15 @@
 }
 
 .home .main .input .buttons {
+    width: 100%;
+    padding-left: 7px;
     float: right;
 }
 
+.home .main .input .buttons #resultMessage {
+    font-style: italic;
+    font-weight: bold;
+}
 .amountError {
     background-color: lightpink;
 }

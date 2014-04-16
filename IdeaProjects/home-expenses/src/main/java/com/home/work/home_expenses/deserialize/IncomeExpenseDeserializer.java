@@ -8,6 +8,8 @@ import org.codehaus.jackson.map.DeserializationContext;
 import org.codehaus.jackson.map.JsonDeserializer;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,14 +17,28 @@ import java.util.Date;
  */
 public class IncomeExpenseDeserializer extends JsonDeserializer<IncomeExpenseDetail> {
 
+    private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
     @Override
     public IncomeExpenseDetail deserialize(JsonParser jsonParser,
                                            DeserializationContext deserializationContext) throws IOException {
 
         ObjectCodec oc = jsonParser.getCodec();
         JsonNode node = oc.readTree(jsonParser);
+
+        Date transactionDate = null;
+        try {
+            final String transactionDateFromRequest = node.get("transactionDate").getTextValue();
+            transactionDate = dateFormatter.parse(
+                    (transactionDateFromRequest.isEmpty()) ? dateFormatter.format(new Date()) :
+                    transactionDateFromRequest);
+        } catch (ParseException ex) {
+            throw new IllegalArgumentException("Error occurred while parsing date");
+        }
+
         return new IncomeExpenseDetail(node.get("amount").getDecimalValue(), node.get("description").getTextValue(),
-                node.get("category").getTextValue(), new Date(), node.get("amountType").getTextValue());
+                                       node.get("category").getTextValue(), transactionDate,
+                                       node.get("amountType").getTextValue());
     }
 
 }

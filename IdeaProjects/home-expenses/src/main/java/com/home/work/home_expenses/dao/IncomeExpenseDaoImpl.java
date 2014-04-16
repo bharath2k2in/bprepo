@@ -18,8 +18,6 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
     @Autowired
     public IncomeExpenseDaoImpl(final DataSource dataSource) {
         this.dataSource = dataSource;
@@ -27,10 +25,12 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
     }
 
     public void create(final IncomeExpenseDetail incomeExpenseDetail) {
-        String SQL = "insert into income_and_expense (amount, description, category, amount_type, transaction_date) values (?, ?, ?, ?, ?)";
+        String SQL = "insert into income_and_expense (amount, description, category, amount_type, " +
+                "transaction_date) values (?, ?, ?, ?, ?)";
 
-        jdbcTemplate.update(SQL, incomeExpenseDetail.getAmount(), incomeExpenseDetail.getDescription(), incomeExpenseDetail.getCategory(), incomeExpenseDetail.getAmountType(), sdf.format(new Date()));
-        System.out.println("Created Record");
+        jdbcTemplate.update(SQL, incomeExpenseDetail.getAmount(), incomeExpenseDetail.getDescription(),
+                            incomeExpenseDetail.getCategory(), incomeExpenseDetail.getAmountType(),
+                            incomeExpenseDetail.getTransactionDate());
         return;
     }
 }

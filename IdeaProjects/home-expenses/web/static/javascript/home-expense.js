@@ -5,24 +5,39 @@ var incomeCategoryDiv;
 var addBtn;
 var clearBtn;
 var resultMessage;
+var dateDiv;
+var validInput = true;
 
 $(document).ready(function () {
-    amountDiv = $("#amount");
-    descriptionDiv = $("#desc");
-    expenseCategoryDiv = $("#expenseCategory");
-    incomeCategoryDiv = $("#incomeCategory");
-    addBtn = $("#add");
-    clearBtn = $("#clear");
-    resultMessage = $("#showResultMessage");
+        amountDiv = $("#amount");
+        descriptionDiv = $("#desc");
+        expenseCategoryDiv = $("#expenseCategory");
+        incomeCategoryDiv = $("#incomeCategory");
+        addBtn = $("#add");
+        clearBtn = $("#clear");
+        resultMessage = $("#resultMessage");
+        dateDiv = $("#datePicker");
 
-    amountDiv.keypress(validateNumber);
-    amountDiv.blur(validateAmount);
+        amountDiv.keypress(validateNumber);
+        amountDiv.blur(validateAmount);
 
-    $("input[name$='amountType']").click(showCategories);
+        $("input[name$='amountType']").click(showCategories);
+        dateDiv.datepicker({
+                dateFormat: 'yy-mm-dd',
+                maxDate: new Date()
+            }
+        );
 
-    addBtn.click(submitIncomeExpenseDetails);
-    clearBtn.click(clearInput);
-});
+        addBtn.click(submitIncomeExpenseDetails);
+        clearBtn.click(clearFields);
+    }
+);
+
+function clearFields() {
+    clearInput();
+    resultMessage.text("");
+    amountDiv.removeClass("amountError");
+};
 
 function showCategories() {
     var amountType = $("input[name$='amountType']:checked").val();
@@ -31,13 +46,14 @@ function showCategories() {
     } else if (amountType === "Expense") {
         showExpenseCategories()
     }
-}
+};
 
 function submitIncomeExpenseDetails() {
 
     var amount = parseFloat(amountDiv.val());
     var description = descriptionDiv.val();
     var amountType = $("input[name$='amountType']:checked").val();
+    var transactionDate = dateDiv.val();
 
     var category;
 
@@ -47,24 +63,26 @@ function submitIncomeExpenseDetails() {
         category = incomeCategoryDiv.find('option:selected').text();
     }
 
-    if (isNaN(amount) || category === "Category" || description.trim() === "") {
-        alert("Wrong Input");
+    if (isNaN(amount) || category === "Category" || description.trim() === "" || !validInput) {
+        $("#resultMessage").css('color', 'red').text("Wrong Input");
     } else {
         $.ajax({
-            url: "http://localhost:8080/home-expenses/expense/add",
-            type: "POST",
-            data: JSON.stringify({amount: amount, description: description, category: category, amountType: amountType}),
-            contentType: "application/json",
-            dataType: "script",
-            success: function (data) {
-                clearInput();
-            },
-            error: function (e) {
-                alert("Error occurred while adding : " + JSON.stringify(e));
+                url: "http://localhost:8080/home-expenses/expense/add",
+                type: "POST",
+                data: JSON.stringify({amount: amount, description: description, category: category, amountType: amountType, transactionDate: transactionDate}),
+                contentType: "application/json",
+                dataType: "script",
+                success: function (data) {
+                    clearInput();
+                    resultMessage.css('color', 'green').text("Record added successfully");
+                },
+                error: function (e) {
+                    resultMessage.css('color', 'red').text("Error occurred while adding record");
+                }
             }
-        });
+        );
     }
-}
+};
 
 function clearInput() {
     amountDiv.val("");
@@ -74,7 +92,8 @@ function clearInput() {
     } else if (incomeCategoryDiv.css("display") === "inline-block") {
         incomeCategoryDiv.find('option:first').attr('selected', 'selected');
     }
-}
+    dateDiv.val("");
+};
 
 function showIncomeCategories() {
     incomeCategoryDiv.show();
@@ -101,8 +120,10 @@ function validateAmount() {
     var regex = /^[-]?[0-9,]*[.]?[0-9]*$/;
     if (!regex.test(amount)) {
         amountDiv.addClass("amountError");
+        validInput = false;
     } else {
-        amountDiv.removeClass("amountError")
+        amountDiv.removeClass("amountError");
+        validInput = true;
     }
 };
 
