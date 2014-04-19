@@ -4,7 +4,6 @@ var expenseCategoryDiv;
 var incomeCategoryDiv;
 var addBtn;
 var clearBtn;
-var resultMessage;
 var dateDiv;
 var validInput = true;
 
@@ -15,7 +14,6 @@ $(document).ready(function () {
         incomeCategoryDiv = $("#incomeCategory");
         addBtn = $("#add");
         clearBtn = $("#clear");
-        resultMessage = $("#resultMessage");
         dateDiv = $("#datePicker");
 
         amountDiv.keypress(validateNumber);
@@ -35,8 +33,8 @@ $(document).ready(function () {
 
 function clearFields() {
     clearInput();
-    resultMessage.text("");
     amountDiv.removeClass("amountError");
+    $("#resultMessage").css('display', 'block').text("");
 };
 
 function showCategories() {
@@ -49,6 +47,8 @@ function showCategories() {
 };
 
 function submitIncomeExpenseDetails() {
+
+    $("#resultMessage").css('display', 'block').text("");
 
     var amount = parseFloat(amountDiv.val());
     var description = descriptionDiv.val();
@@ -74,10 +74,11 @@ function submitIncomeExpenseDetails() {
                 dataType: "script",
                 success: function (data) {
                     clearInput();
-                    resultMessage.css('color', 'green').text("Record added successfully");
+                    $("#resultMessage").css('color', 'green').text("Record added successfully");
+                    $("#resultMessage").fadeOut(3000);
                 },
                 error: function (e) {
-                    resultMessage.css('color', 'red').text("Error occurred while adding record");
+                    $("#resultMessage").css('color', 'red').text("Error occurred while adding record");
                 }
             }
         );
