@@ -1,7 +1,6 @@
 var amountDiv;
 var descriptionDiv;
-var expenseCategoryDiv;
-var incomeCategoryDiv;
+var categoryDiv;
 var addBtn;
 var clearBtn;
 var dateDiv;
@@ -10,11 +9,10 @@ var validInput = true;
 $(document).ready(function () {
         amountDiv = $("#amount");
         descriptionDiv = $("#desc");
-        expenseCategoryDiv = $("#expenseCategory");
-        incomeCategoryDiv = $("#incomeCategory");
         addBtn = $("#add");
         clearBtn = $("#clear");
         dateDiv = $("#datePicker");
+        categoryDiv = $("#category");
 
         amountDiv.keypress(validateNumber);
         amountDiv.blur(validateAmount);
@@ -39,11 +37,21 @@ function clearFields() {
 
 function showCategories() {
     var categoryType = $("input[name$='categoryType']:checked").val();
-    if (categoryType === "Income") {
-        showIncomeCategories();
-    } else if (categoryType === "Expense") {
-        showExpenseCategories()
-    }
+    $.ajax({
+        url: "http://localhost:8080/home-expenses/category",
+        type: "POST",
+        data: categoryType,
+        contentType: "text/plain",
+        success: function (data) {
+            categoryDiv.empty();
+            $.each(data, function (key, value) {
+                categoryDiv.append($('<option></option>').val(value.categoryName).text(value.categoryName));
+            });
+        },
+        error: function (e) {
+            $("#resultMessage").css('color', 'red').text("Error occurred while retrieving categories");
+        }
+    })
 };
 
 function submitIncomeExpenseDetails() {
@@ -55,13 +63,7 @@ function submitIncomeExpenseDetails() {
     var categoryType = $("input[name$='categoryType']:checked").val();
     var transactionDate = dateDiv.val();
 
-    var categoryName;
-
-    if (expenseCategoryDiv.is(':visible')) {
-        categoryName = expenseCategoryDiv.find('option:selected').text();
-    } else if (incomeCategoryDiv.is(':visible')) {
-        categoryName = incomeCategoryDiv.find('option:selected').text();
-    }
+    var categoryName = categoryDiv.find('option:selected').text();
 
     if (isNaN(amount) || categoryName === "Category" || description.trim() === "" || !validInput) {
         $("#resultMessage").css('color', 'red').text("Wrong Input");
@@ -87,23 +89,12 @@ function submitIncomeExpenseDetails() {
 
 function clearInput() {
     amountDiv.val("");
+    $("input[name$='categoryType']:checked").each(function(){
+        $(this).prop('checked', false);
+    });
     descriptionDiv.val("");
-    if (expenseCategoryDiv.css("display") === "inline-block") {
-        expenseCategoryDiv.find('option:first').attr('selected', 'selected');
-    } else if (incomeCategoryDiv.css("display") === "inline-block") {
-        incomeCategoryDiv.find('option:first').attr('selected', 'selected');
-    }
+    categoryDiv.empty();
     dateDiv.val("");
-};
-
-function showIncomeCategories() {
-    incomeCategoryDiv.show();
-    expenseCategoryDiv.hide();
-};
-
-function showExpenseCategories() {
-    expenseCategoryDiv.show();
-    incomeCategoryDiv.hide();
 };
 
 function validateNumber(event) {

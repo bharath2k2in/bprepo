@@ -14,8 +14,7 @@
     <fieldset class="input ">
         <input id="amount" type="text" required="required" placeholder="Amount"/>
 
-        <input name="categoryType" type="radio" id="income" value="Income"
-               checked="checked"/>
+        <input name="categoryType" type="radio" id="income" value="Income"/>
         <label for="income">Income</label>
         <input name="categoryType" type="radio" id="expense" value="Expense"/>
         <label for="expense">Expense</label>
@@ -23,7 +22,10 @@
 
 
     <fieldset class="input">
-        <select id="expenseCategory" hidden="hidden">
+        <select id="category">
+            <option value="" disabled selected>Category</option>
+        </select>
+        <!--<select id="expenseCategory" hidden="hidden">
             <option value="" disabled selected style="...">Category</option>
             <option value="Food">Food</option>
             <option value="Travel">Travel</option>
@@ -46,7 +48,7 @@
             <option value="Incentive">Incentive</option>
             <option value="TaxReturns">Tax Returns</option>
             <option value="Reimbursement">Reimbursement</option>
-        </select>
+        </select>-->
         <input type="text" id="datePicker" placeholder="Date"/>
     </fieldset>
 
@@ -62,7 +64,9 @@
                 <col span="1" style="width: 15%;">
             </colgroup>
             <tr>
-                <td><div id="resultMessage"/></td>
+                <td>
+                    <div id="resultMessage"/>
+                </td>
                 <td><input id="add" type="button" value="Add"/></td>
                 <td><input id="clear" type="button" value="Clear"/></td>
             </tr>

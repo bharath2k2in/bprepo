@@ -37,8 +37,9 @@
     margin-left: 15px;
 }
 
-.home .main .input #expenseCategory, #incomeCategory {
+.home .main .input #category {
     width: 50%;
+    height: 45px;
 }
 
 .home .main .input #datePicker {
@@ -49,7 +50,7 @@
     width: 93%;
 }
 
-.home .main .input #amount, #desc, #expenseCategory, #incomeCategory, #datePicker {
+.home .main .input #amount, #desc, #category, #datePicker {
     height: 30px;
     padding: 5px;
     margin: 0 5px 0 5px;
@@ -63,16 +64,11 @@
     padding-left: 9px;
 }
 
-.home .main .input #amount, #desc, #expenseCategory, #incomeCategory, #datePicker {
+.home .main .input #amount, #desc, #category, #datePicker {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 2px solid lightblue;
     font-style: italic;
-}
-
-.home .main .input #expenseCategory, #incomeCategory {
-    height: 45px;
-    color: black;
 }
 
 .home .main .input .buttons #add, #clear {
