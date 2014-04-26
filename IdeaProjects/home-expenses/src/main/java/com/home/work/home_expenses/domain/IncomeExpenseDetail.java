@@ -16,18 +16,18 @@ public class IncomeExpenseDetail {
 
     protected String description;
 
-    protected String category;
+    protected String categoryName;
 
     protected Date transactionDate;
 
-    protected String amountType;
+    protected String categoryType;
 
-    public IncomeExpenseDetail(BigDecimal amount, String description, String category, Date transactionDate, String amountType) {
+    public IncomeExpenseDetail(BigDecimal amount, String description, String categoryName, Date transactionDate, String categoryType) {
         this.amount = amount;
         this.description = description;
-        this.category = category;
+        this.categoryName = categoryName;
         this.transactionDate = transactionDate;
-        this.amountType = amountType;
+        this.categoryType = categoryType;
     }
 
     public BigDecimal getAmount() {
@@ -38,16 +38,16 @@ public class IncomeExpenseDetail {
         return description;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public Date getTransactionDate() {
         return transactionDate;
     }
 
-    public String getAmountType() {
-        return amountType;
+    public String getCategoryType() {
+        return categoryType;
     }
 
     @Override
@@ -55,9 +55,9 @@ public class IncomeExpenseDetail {
         return "IncomeExpenseDetail{" +
                 "amount=" + amount +
                 ", description='" + description + '\'' +
-                ", category='" + category + '\'' +
+                ", categoryName='" + categoryName + '\'' +
                 ", transactionDate=" + transactionDate +
-                ", amountType='" + amountType + '\'' +
+                ", categoryType='" + categoryType + '\'' +
                 '}';
     }
 }

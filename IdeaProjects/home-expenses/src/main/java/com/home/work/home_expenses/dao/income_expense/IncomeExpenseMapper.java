@@ -14,8 +14,8 @@
 //    public IncomeExpenseDetail mapRow(ResultSet rs, int rowNum) throws SQLException {
 //        IncomeExpenseDetail incomeExpenseDetail = new IncomeExpenseDetail();
 //        incomeExpenseDetail.setAmount(rs.getBigDecimal("amount"));
-//        incomeExpenseDetail.setAmountType(rs.getString("amount_type"));
-//        incomeExpenseDetail.setCategory(rs.getString("category"));
+//        incomeExpenseDetail.setAmountType(rs.getString("category_type"));
+//        incomeExpenseDetail.setCategory(rs.getString("categoryName"));
 //        incomeExpenseDetail.setDescription(rs.getString("description"));
 ////        incomeExpenseDetail.setTransactionDate(rs.getDate("transaction_date"));
 //        return incomeExpenseDetail;

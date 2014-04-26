@@ -19,7 +19,7 @@ $(document).ready(function () {
         amountDiv.keypress(validateNumber);
         amountDiv.blur(validateAmount);
 
-        $("input[name$='amountType']").click(showCategories);
+        $("input[name$='categoryType']").click(showCategories);
         dateDiv.datepicker({
                 dateFormat: 'yy-mm-dd',
                 maxDate: new Date()
@@ -38,10 +38,10 @@ function clearFields() {
 };
 
 function showCategories() {
-    var amountType = $("input[name$='amountType']:checked").val();
-    if (amountType === "Income") {
+    var categoryType = $("input[name$='categoryType']:checked").val();
+    if (categoryType === "Income") {
         showIncomeCategories();
-    } else if (amountType === "Expense") {
+    } else if (categoryType === "Expense") {
         showExpenseCategories()
     }
 };
@@ -52,24 +52,24 @@ function submitIncomeExpenseDetails() {
 
     var amount = parseFloat(amountDiv.val());
     var description = descriptionDiv.val();
-    var amountType = $("input[name$='amountType']:checked").val();
+    var categoryType = $("input[name$='categoryType']:checked").val();
     var transactionDate = dateDiv.val();
 
-    var category;
+    var categoryName;
 
     if (expenseCategoryDiv.is(':visible')) {
-        category = expenseCategoryDiv.find('option:selected').text();
+        categoryName = expenseCategoryDiv.find('option:selected').text();
     } else if (incomeCategoryDiv.is(':visible')) {
-        category = incomeCategoryDiv.find('option:selected').text();
+        categoryName = incomeCategoryDiv.find('option:selected').text();
     }
 
-    if (isNaN(amount) || category === "Category" || description.trim() === "" || !validInput) {
+    if (isNaN(amount) || categoryName === "Category" || description.trim() === "" || !validInput) {
         $("#resultMessage").css('color', 'red').text("Wrong Input");
     } else {
         $.ajax({
                 url: "http://localhost:8080/home-expenses/expense/add",
                 type: "POST",
-                data: JSON.stringify({amount: amount, description: description, category: category, amountType: amountType, transactionDate: transactionDate}),
+                data: JSON.stringify({amount: amount, description: description, categoryName: categoryName, categoryType: categoryType, transactionDate: transactionDate}),
                 contentType: "application/json",
                 dataType: "script",
                 success: function (data) {

@@ -1,14 +1,11 @@
 package com.home.work.home_expenses;
 
-import com.home.work.home_expenses.dao.IncomeExpenseDao;
+import com.home.work.home_expenses.dao.income_expense.IncomeExpenseDao;
 import com.home.work.home_expenses.domain.IncomeExpenseDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -27,7 +24,7 @@ public class IncomeExpenseService {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("/add")
     public String addExpense(final IncomeExpenseDetail expenseDetail) {
         incomeExpenseDao.create(expenseDetail);

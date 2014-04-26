@@ -1,4 +1,4 @@
-package com.home.work.home_expenses.dao;
+package com.home.work.home_expenses.dao.income_expense;
 
 import com.home.work.home_expenses.domain.IncomeExpenseDetail;
 

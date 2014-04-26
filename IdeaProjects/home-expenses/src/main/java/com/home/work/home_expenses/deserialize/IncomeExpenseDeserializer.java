@@ -37,8 +37,8 @@ public class IncomeExpenseDeserializer extends JsonDeserializer<IncomeExpenseDet
         }
 
         return new IncomeExpenseDetail(node.get("amount").getDecimalValue(), node.get("description").getTextValue(),
-                                       node.get("category").getTextValue(), transactionDate,
-                                       node.get("amountType").getTextValue());
+                                       node.get("categoryName").getTextValue(), transactionDate,
+                                       node.get("categoryType").getTextValue());
     }
 
 }
