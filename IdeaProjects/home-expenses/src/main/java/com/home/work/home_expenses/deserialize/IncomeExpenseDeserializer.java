@@ -20,25 +20,28 @@ public class IncomeExpenseDeserializer extends JsonDeserializer<IncomeExpenseDet
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
-    public IncomeExpenseDetail deserialize(JsonParser jsonParser,
-                                           DeserializationContext deserializationContext) throws IOException {
+    public IncomeExpenseDetail deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+	throws IOException {
 
-        ObjectCodec oc = jsonParser.getCodec();
-        JsonNode node = oc.readTree(jsonParser);
+	ObjectCodec oc = jsonParser.getCodec();
+	JsonNode node = oc.readTree(jsonParser);
 
-        Date transactionDate = null;
-        try {
-            final String transactionDateFromRequest = node.get("transactionDate").getTextValue();
-            transactionDate = dateFormatter.parse(
-                    (transactionDateFromRequest.isEmpty()) ? dateFormatter.format(new Date()) :
-                    transactionDateFromRequest);
-        } catch (ParseException ex) {
-            throw new IllegalArgumentException("Error occurred while parsing date");
-        }
+	Date transactionDate = null;
+	try {
+	    final String transactionDateFromRequest = node.get("transactionDate").getTextValue();
+	    transactionDate = dateFormatter.parse((transactionDateFromRequest.isEmpty()) ? dateFormatter
+		.format(new Date()) : transactionDateFromRequest);
+	} catch (ParseException ex) {
+	    throw new IllegalArgumentException("Error occurred while parsing date");
+	}
 
-        return new IncomeExpenseDetail(node.get("amount").getDecimalValue(), node.get("description").getTextValue(),
-                                       node.get("categoryName").getTextValue(), transactionDate,
-                                       node.get("categoryType").getTextValue());
+	final IncomeExpenseDetail incomeExpenseDetail = new IncomeExpenseDetail();
+	incomeExpenseDetail.setAmount(node.get("amount").getDecimalValue());
+	incomeExpenseDetail.setCategoryName(node.get("categoryName").getTextValue());
+	incomeExpenseDetail.setCategoryType(node.get("categoryType").getTextValue());
+	incomeExpenseDetail.setDescription(node.get("description").getTextValue());
+	incomeExpenseDetail.setTransactionDate(transactionDate);
+	return incomeExpenseDetail;
     }
 
 }

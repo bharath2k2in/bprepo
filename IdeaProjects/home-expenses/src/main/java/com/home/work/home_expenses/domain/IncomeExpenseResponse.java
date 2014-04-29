@@ -1,54 +1,41 @@
 package com.home.work.home_expenses.domain;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
 
 /**
  * Created by Bharath on 02-04-2014.
  */
-
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement
 public class IncomeExpenseResponse {
 
-    @XmlAttribute(required = true)
-    private BigDecimal amount;
+    private BigDecimal income;
 
-    @XmlAttribute(required = true)
-    private String description;
+    private BigDecimal expense;
 
-    @XmlAttribute(required = true)
-    private String category;
+    private BigDecimal difference;
 
-    public IncomeExpenseResponse() {
+    public BigDecimal getIncome() {
+        return income;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public void setIncome(BigDecimal income) {
+        this.income = income;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public BigDecimal getExpense() {
+        return expense;
     }
 
-    public String getDescription() {
-        return description;
+    public void setExpense(BigDecimal expense) {
+        this.expense = expense;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public BigDecimal getDifference() {
+        return difference;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDifference(BigDecimal difference) {
+        this.difference = difference;
     }
 }
 

@@ -20,7 +20,6 @@ public class CategoryDaoImpl implements CategoryDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Override
     public List<Category> getCategories(final String categoryType) {
         final String sql = "select category_name, category_type from category where category_type = ?";
         return jdbcTemplate.query(sql, new Object[]{categoryType}, new CategoryMapper());

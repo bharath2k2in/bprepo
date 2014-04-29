@@ -27,4 +27,6 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
                             incomeExpenseDetail.getTransactionDate());
         return;
     }
+
+
 }

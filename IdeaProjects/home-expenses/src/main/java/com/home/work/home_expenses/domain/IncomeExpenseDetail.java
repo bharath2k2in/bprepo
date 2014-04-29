@@ -22,32 +22,44 @@ public class IncomeExpenseDetail {
 
     protected String categoryType;
 
-    public IncomeExpenseDetail(BigDecimal amount, String description, String categoryName, Date transactionDate, String categoryType) {
-        this.amount = amount;
-        this.description = description;
-        this.categoryName = categoryName;
-        this.transactionDate = transactionDate;
-        this.categoryType = categoryType;
-    }
-
     public BigDecimal getAmount() {
         return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getCategoryName() {
         return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Date getTransactionDate() {
         return transactionDate;
     }
 
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
     public String getCategoryType() {
         return categoryType;
+    }
+
+    public void setCategoryType(String categoryType) {
+        this.categoryType = categoryType;
     }
 
     @Override
