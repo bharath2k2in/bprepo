@@ -1,3 +1,9 @@
 IdeaProjects/home-expenses/.idea/
 IdeaProjects/home-expenses/target/
 *.iml
+*.lock
+*.zip
+*.log
+*.ini
+*.classpath
+*.project
