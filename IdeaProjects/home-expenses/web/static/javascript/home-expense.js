@@ -26,8 +26,33 @@ $(document).ready(function () {
 
         addBtn.click(submitIncomeExpenseDetails);
         clearBtn.click(clearFields);
+        
+        updateIncomeExpenseReport();
     }
 );
+
+function updateIncomeExpenseReport() {
+	fillIncomeAndExpense("current");
+    fillIncomeAndExpense("previous");
+};
+
+function fillIncomeAndExpense(currentOrPrevious) {
+	$.ajax({
+        url: "http://localhost:8080/home-expenses/income-expense/retrieve",
+        type: "POST",
+        data: currentOrPrevious,
+        contentType: "text/plain",
+        success: function (data) {
+            $("#" + currentOrPrevious + "MonthIncome").text(data.income);
+            $("#" + currentOrPrevious + "MonthExpense").text(data.expense);
+            $("#" + currentOrPrevious + "MonthBalance").text(data.difference);
+        },
+        error: function (e) {
+            $("#resultMessage").css('color', 'red').text("Error occurred while retrieving income and expense details");
+        }
+    })
+	
+};
 
 function clearFields() {
     clearInput();
@@ -78,6 +103,7 @@ function submitIncomeExpenseDetails() {
                     clearInput();
                     $("#resultMessage").css('color', 'green').text("Record added successfully");
                     $("#resultMessage").fadeOut(3000);
+                    setTimeout(updateIncomeExpenseReport, 3000);
                 },
                 error: function (e) {
                     $("#resultMessage").css('color', 'red').text("Error occurred while adding record");

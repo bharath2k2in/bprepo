@@ -2,10 +2,13 @@ package com.home.work.home_expenses.domain;
 
 import java.math.BigDecimal;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 
 /**
  * Created by Bharath on 02-04-2014.
  */
+@JsonSerialize
 public class IncomeExpenseResponse {
 
     private BigDecimal income;

@@ -75,14 +75,14 @@
     color: red;
 }
 
-.home .report .tableBody #previousMonthIncome, #previousMonthExpense, #previousMonthSavings {
+.home .report .tableBody #previousMonthIncome, #previousMonthExpense, #previousMonthBalance {
     float: right;
     font-size: 1.1em;
     font-style: normal;
     padding: 10px 10px 20px 5px;
 }
 
-.home .report .tableBody #previousMonthSavings {
+.home .report .tableBody #previousMonthBalance {
     font-size: 1.5em;
 }
 

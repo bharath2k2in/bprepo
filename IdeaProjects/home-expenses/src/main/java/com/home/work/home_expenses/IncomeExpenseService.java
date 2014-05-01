@@ -2,6 +2,8 @@ package com.home.work.home_expenses;
 
 import com.home.work.home_expenses.dao.income_expense.IncomeExpenseDao;
 import com.home.work.home_expenses.domain.IncomeExpenseDetail;
+import com.home.work.home_expenses.domain.IncomeExpenseResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,14 +33,11 @@ public class IncomeExpenseService {
         return new String();
     }
 
-    public void test() {
-        // sql to retreive current months details
-        // select * from income_and_expense
-        // where (transaction_date between  DATEADD(dd, -DAY(GETDATE()), GETDATE()) AND GETDATE() )
-
-        // previous month details
-        // select * from income_and_expense
-        // where (transaction_date between DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE())-1, 0)
-         //      AND DATEADD(MONTH, DATEDIFF(MONTH, -1, GETDATE())-1, -1))
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/retrieve")
+    public IncomeExpenseResponse retrieveIncomeAndExpense(final String currentOrPreviousMonth) {
+	return incomeExpenseDao.retrieveIncomeAndExpense(currentOrPreviousMonth);
     }
 }
