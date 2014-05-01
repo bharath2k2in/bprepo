@@ -69,7 +69,7 @@ function submitIncomeExpenseDetails() {
         $("#resultMessage").css('color', 'red').text("Wrong Input");
     } else {
         $.ajax({
-                url: "http://localhost:8080/home-expenses/expense/add",
+                url: "http://localhost:8080/home-expenses/income-expense/add",
                 type: "POST",
                 data: JSON.stringify({amount: amount, description: description, categoryName: categoryName, categoryType: categoryType, transactionDate: transactionDate}),
                 contentType: "application/json",

@@ -3,14 +3,16 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    padding-top: 350px;
+    padding-top: 140px;
 }
 
-.home .main {
+.home .incomeExpense {
     -webkit-margin-start: 400px;
     -webkit-margin-end: 400px;
     -moz-margin-start: 400px;
     -moz-margin-end: 400px;
+    margin-start: 400px;
+    margin-end: 400px;
     background-color: white;
     left: 290px;
     right: 200px;
@@ -20,58 +22,126 @@
     width: 450px;
 }
 
-.home .main .input {
+.home .report {
+    -webkit-margin-start: 100px;
+    -webkit-margin-end: 100px;
+    -moz-margin-start: 100px;
+    -moz-margin-end: 100px;
+    margin-start: 100px;
+    margin-end: 100px;
+    background-color: white;
+    left: 110px;
+    right: 400px;
+    border-radius: 10px;
+    position: relative;
+    top: 205px;
+    width: 450px;
+}
+
+.home .report fieldset {
     border: none;
 }
 
-.home .main .input #amount {
+.home .report .tableHeader {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: blue;
+}
+
+.home .report .tableBody {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 0.9em;
+    font-family: Verdana;
+}
+
+.home .report .tableBody #currentMonthIncome, #currentMonthExpense, #currentMonthBalance {
+    font-size: 1.5em;
+    font-style: normal;
+    padding: 15px 40px 15px 5px;
+    float: right;
+}
+
+.home .report .tableBody #currentMonthBalance {
+    font-size: 2em;
+}
+
+.home .report .tableBody #currentMonthIncome {
+    color: green;
+}
+
+.home .report .tableBody #currentMonthExpense {
+    color: red;
+}
+
+.home .report .tableBody #previousMonthIncome, #previousMonthExpense, #previousMonthSavings {
+    float: right;
+    font-size: 1.1em;
+    font-style: normal;
+    padding: 10px 10px 20px 5px;
+}
+
+.home .report .tableBody #previousMonthSavings {
+    font-size: 1.5em;
+}
+
+.home .report fieldset table {
+    width: 100%;
+}
+
+.home .incomeExpense .input {
+    border: none;
+}
+
+.home .incomeExpense .input #amount {
     width: 46%;
 }
 
-.home .main .input label {
+.home .incomeExpense .input label {
     font-style: italic;
     font-weight: bold;
 }
 
-.home .main .input #income {
+.home .incomeExpense .input #income {
     margin-left: 15px;
 }
 
-.home .main .input #category {
+.home .incomeExpense .input #category {
     width: 50%;
     height: 45px;
 }
 
-.home .main .input #datePicker {
+.home .incomeExpense .input #datePicker {
     width: 40%;
 }
 
-.home .main .input #desc {
+.home .incomeExpense .input #desc {
     width: 93%;
 }
 
-.home .main .input #amount, #desc, #category, #datePicker {
+.home .incomeExpense .input #amount, #desc, #category, #datePicker {
     height: 30px;
     padding: 5px;
     margin: 0 5px 0 5px;
 }
 
-.home .main .input #amount {
+.home .incomeExpense .input #amount {
     margin-top: 10px;
 }
 
-.home .main .input #amount, #desc {
+.home .incomeExpense .input #amount, #desc {
     padding-left: 9px;
 }
 
-.home .main .input #amount, #desc, #category, #datePicker {
+.home .incomeExpense .input #amount, #desc, #category, #datePicker {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 2px solid lightblue;
     font-style: italic;
 }
 
-.home .main .input .buttons #add, #clear {
+.home .incomeExpense .input .buttons #add, #clear {
     cursor: pointer;
     width: 50px;
     height: 30px;
@@ -81,16 +151,17 @@
     border: 3px solid lightgreen;
 }
 
-.home .main .input .buttons {
+.home .incomeExpense .input .buttons {
     width: 100%;
     padding-left: 7px;
     float: right;
 }
 
-.home .main .input .buttons #resultMessage {
+.home .incomeExpense .input .buttons #resultMessage {
     font-style: italic;
     font-weight: bold;
 }
+
 .amountError {
     background-color: lightpink;
 }

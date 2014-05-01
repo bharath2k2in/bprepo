@@ -10,7 +10,41 @@
     <link rel="stylesheet" type="text/css" href="static/css/home-expense.css">
 </head>
 <body class="home">
-<div class="main">
+<div class="report">
+    <fieldset>
+        <table>
+            <colgroup>
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 25%;">
+                <col span="1" style="width: 25%;">
+            </colgroup>
+            <thead class="tableHeader">
+                <td colspan="2">Current Month</td>
+                <td colspan="2">Previous Month</td>
+            </thead>
+            <tbody class="tableBody">
+                <td>Income</td>
+                <td id="currentMonthIncome">0</td>
+                <td>Income</td>
+                <td id="previousMonthIncome">0</td>
+            </tbody>
+            <tbody class="tableBody">
+                <td>Expense</td>
+                <td id="currentMonthExpense">0</td>
+                <td>Expense</td>
+                <td id="previousMonthExpense">0</td>
+            </tbody>
+            <tbody class="tableBody">
+                <td>Balance</td>
+                <td id="currentMonthBalance">0</td>
+                <td>Savings</td>
+                <td id="previousMonthSavings">0</td>
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+<div class="incomeExpense">
     <fieldset class="input ">
         <input id="amount" type="text" required="required" placeholder="Amount"/>
 
@@ -20,35 +54,10 @@
         <label for="expense">Expense</label>
     </fieldset>
 
-
     <fieldset class="input">
         <select id="category">
             <option value="" disabled selected>Category</option>
         </select>
-        <!--<select id="expenseCategory" hidden="hidden">
-            <option value="" disabled selected style="...">Category</option>
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Gift">Gift</option>
-            <option value="Phone">Phone</option>
-            <option value="Internet">Internet</option>
-            <option value="DTH">DTH</option>
-            <option value="Groceries">Groceries</option>
-            <option value="Rent">Rent</option>
-            <option value="EB">Electricity Bill</option>
-            <option value="Gas">Gas Bill</option>
-            <option value="Personal">Personal</option>
-            <option value="Medical">Medical</option>
-            <option value="Misc">Miscellaneous</option>
-        </select>
-        <select id="incomeCategory">
-            <option value="" disabled selected style="...">Category</option>
-            <option value="Salary">Salary</option>
-            <option value="Rent">Rent</option>
-            <option value="Incentive">Incentive</option>
-            <option value="TaxReturns">Tax Returns</option>
-            <option value="Reimbursement">Reimbursement</option>
-        </select>-->
         <input type="text" id="datePicker" placeholder="Date"/>
     </fieldset>
 
@@ -63,13 +72,13 @@
                 <col span="1" style="width: 15%;">
                 <col span="1" style="width: 15%;">
             </colgroup>
-            <tr>
-                <td>
-                    <div id="resultMessage"/>
-                </td>
-                <td><input id="add" type="button" value="Add"/></td>
-                <td><input id="clear" type="button" value="Clear"/></td>
-            </tr>
+            <tbody>
+            <td>
+                <div id="resultMessage"/>
+            </td>
+            <td><input id="add" type="button" value="Add"/></td>
+            <td><input id="clear" type="button" value="Clear"/></td>
+            </tbody>
         </table>
     </fieldset>
 </div>
