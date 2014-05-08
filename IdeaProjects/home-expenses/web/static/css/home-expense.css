@@ -9,17 +9,18 @@
     background-color: white;
     border-radius: 10px;
     position: relative;
-    width: 450px;
+    width: 435px;
+    border: none;
 }
 
 .home .incomeExpense {
-    right: 210px;
+    right: 205px;
     top: 125px;
     float: right;
 }
 
 .home .report {
-    left: 210px;
+    left: 205px;
     top: 350px;
 }
 
@@ -75,7 +76,7 @@
     font-size: 1.5em;
 }
 
-.home .report fieldset table {
+.home .report table {
     width: 100%;
 }
 

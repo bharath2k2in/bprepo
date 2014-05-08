@@ -10,41 +10,39 @@
     <link rel="stylesheet" type="text/css" href="static/css/home-expense.css">
 </head>
 <body class="home">
-<div class="report">
-    <fieldset>
-        <table>
-            <colgroup>
-                <col span="1" style="width: 25%;">
-                <col span="1" style="width: 30%;">
-                <col span="1" style="width: 25%;">
-                <col span="1" style="width: 30%;">
-            </colgroup>
-            <thead class="tableHeader">
-                <td colspan="2">CURRENT MONTH</td>
-                <td colspan="2" class="applyBorder">PREVIOUS MONTH</td>
-            </thead>
-            <tbody class="tableBody">
-                <td>Income</td>
-                <td id="currentMonthIncome"/>
-                <td class="applyBorder">Income</td>
-                <td id="previousMonthIncome"/>
-            </tbody>
-            <tbody class="tableBody">
-                <td>Expense</td>
-                <td id="currentMonthExpense"/>
-                <td class="applyBorder">Expense</td>
-                <td id="previousMonthExpense"/>
-            </tbody>
-            <tbody class="tableBody">
-                <td>Balance</td>
-                <td id="currentMonthBalance"/>
-                <td class="applyBorder">Savings</td>
-                <td id="previousMonthBalance"/>
-            </tbody>
-        </table>
-    </fieldset>
-</div>
-<div class="incomeExpense">
+<fieldset class="report">
+    <table>
+        <colgroup>
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 30%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 30%;">
+        </colgroup>
+        <thead class="tableHeader">
+        <td colspan="2">CURRENT MONTH</td>
+        <td colspan="2" class="applyBorder">PREVIOUS MONTH</td>
+        </thead>
+        <tbody class="tableBody">
+        <td>Income</td>
+        <td id="currentMonthIncome"/>
+        <td class="applyBorder">Income</td>
+        <td id="previousMonthIncome"/>
+        </tbody>
+        <tbody class="tableBody">
+        <td>Expense</td>
+        <td id="currentMonthExpense"/>
+        <td class="applyBorder">Expense</td>
+        <td id="previousMonthExpense"/>
+        </tbody>
+        <tbody class="tableBody">
+        <td>Balance</td>
+        <td id="currentMonthBalance"/>
+        <td class="applyBorder">Savings</td>
+        <td id="previousMonthBalance"/>
+        </tbody>
+    </table>
+</fieldset>
+<fieldset class="incomeExpense">
     <fieldset class="input ">
         <input id="amount" type="text" required="required" placeholder="Amount"/>
 
@@ -81,7 +79,7 @@
             </tbody>
         </table>
     </fieldset>
-</div>
+</fieldset>
 
 </body>
 </html>
