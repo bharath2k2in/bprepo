@@ -1,41 +1,26 @@
 .home {
     background-image: url("../images/home.jpg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     position: relative;
-    padding-top: 140px;
+}
+
+.home .incomeExpense, .report {
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    width: 450px;
 }
 
 .home .incomeExpense {
-    -webkit-margin-start: 400px;
-    -webkit-margin-end: 400px;
-    -moz-margin-start: 400px;
-    -moz-margin-end: 400px;
-    margin-start: 400px;
-    margin-end: 400px;
-    background-color: white;
-    left: 290px;
-    right: 200px;
-    border-radius: 10px;
-    position: relative;
-    top: -30px;
-    width: 450px;
+    right: 210px;
+    top: 125px;
+    float: right;
 }
 
 .home .report {
-    -webkit-margin-start: 100px;
-    -webkit-margin-end: 100px;
-    -moz-margin-start: 100px;
-    -moz-margin-end: 100px;
-    margin-start: 100px;
-    margin-end: 100px;
-    background-color: white;
-    left: 110px;
-    right: 400px;
-    border-radius: 10px;
-    position: relative;
-    top: 196px;
-    width: 450px;
+    left: 210px;
+    top: 350px;
 }
 
 .home .report fieldset {
@@ -62,7 +47,7 @@
     float: right;
 }
 
-.home .report .apply-border {
+.home .report .applyBorder {
 	padding-left: 10px;
 	border-left: solid lightblue 3px;
 }
