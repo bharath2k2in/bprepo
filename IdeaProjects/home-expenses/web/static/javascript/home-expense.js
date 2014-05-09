@@ -34,8 +34,7 @@ $(document).ready(function () {
 function updateIncomeExpenseReport() {
 	fillIncomeAndExpense("current");
     fillIncomeAndExpense("previous");
-};
-
+}
 function fillIncomeAndExpense(currentOrPrevious) {
 	$.ajax({
         url: "http://localhost:8080/home-expenses/income-expense/retrieve",
@@ -47,19 +46,17 @@ function fillIncomeAndExpense(currentOrPrevious) {
             $("#" + currentOrPrevious + "MonthExpense").text(data.expense);
             $("#" + currentOrPrevious + "MonthBalance").text(data.difference);
         },
-        error: function (e) {
+        error: function () {
             $("#resultMessage").css('color', 'red').text("Error occurred while retrieving income and expense details");
         }
     })
-	
-};
 
+}
 function clearFields() {
     clearInput();
     amountDiv.removeClass("amountError");
     $("#resultMessage").css('display', 'block').text("");
-};
-
+}
 function showCategories() {
     var categoryType = $("input[name$='categoryType']:checked").val();
     $.ajax({
@@ -73,12 +70,11 @@ function showCategories() {
                 categoryDiv.append($('<option></option>').val(value.categoryName).text(value.categoryName));
             });
         },
-        error: function (e) {
+        error: function () {
             $("#resultMessage").css('color', 'red').text("Error occurred while retrieving categories");
         }
     })
-};
-
+}
 function submitIncomeExpenseDetails() {
 
     $("#resultMessage").css('display', 'block').text("");
@@ -111,8 +107,7 @@ function submitIncomeExpenseDetails() {
             }
         );
     }
-};
-
+}
 function clearInput() {
     amountDiv.val("");
     $("input[name$='categoryType']:checked").each(function(){
@@ -121,8 +116,7 @@ function clearInput() {
     descriptionDiv.val("");
     categoryDiv.empty();
     dateDiv.val("");
-};
-
+}
 function validateNumber(event) {
     var key = window.event ? event.keyCode : event.which;
 
@@ -131,8 +125,7 @@ function validateNumber(event) {
     } else if (key < 48 || key > 57) {
         return false;
     } else return true;
-};
-
+}
 function validateAmount() {
     var amount = amountDiv.val();
     var regex = /^[-]?[0-9,]*[.]?[0-9]*$/;
@@ -143,5 +136,5 @@ function validateAmount() {
         amountDiv.removeClass("amountError");
         validInput = true;
     }
-};
+}
 

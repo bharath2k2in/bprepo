@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class IncomeExpenseDeserializer extends JsonDeserializer<IncomeExpenseDetail> {
 
-    private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     public IncomeExpenseDetail deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
@@ -26,7 +26,7 @@ public class IncomeExpenseDeserializer extends JsonDeserializer<IncomeExpenseDet
         ObjectCodec oc = jsonParser.getCodec();
         JsonNode node = oc.readTree(jsonParser);
 
-        Date transactionDate = null;
+        Date transactionDate;
         try {
             final String transactionDateFromRequest = node.get("transactionDate").getTextValue();
             transactionDate = dateFormatter.parse((transactionDateFromRequest.isEmpty()) ? dateFormatter

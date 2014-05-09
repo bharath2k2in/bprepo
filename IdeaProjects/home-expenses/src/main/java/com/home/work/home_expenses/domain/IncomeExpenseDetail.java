@@ -12,15 +12,15 @@ import java.util.Date;
 @JsonDeserialize(using = IncomeExpenseDeserializer.class)
 public class IncomeExpenseDetail {
 
-    protected BigDecimal amount;
+    private BigDecimal amount;
 
-    protected String description;
+    private String description;
 
-    protected String categoryName;
+    private String categoryName;
 
-    protected Date transactionDate;
+    private Date transactionDate;
 
-    protected String categoryType;
+    private String categoryType;
 
     public BigDecimal getAmount() {
         return amount;

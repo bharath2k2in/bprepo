@@ -1,7 +1,5 @@
 .home {
-    background-image: url("../images/home.jpg");
-    background-repeat: no-repeat;
-    background-position: top;
+    background: url("../images/home.jpg") no-repeat top;
     position: relative;
 }
 
@@ -38,7 +36,7 @@
     font-style: italic;
     font-weight: bold;
     font-size: 0.9em;
-    font-family: Verdana;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 .home .report .tableBody #currentMonthIncome, #currentMonthExpense, #currentMonthBalance {

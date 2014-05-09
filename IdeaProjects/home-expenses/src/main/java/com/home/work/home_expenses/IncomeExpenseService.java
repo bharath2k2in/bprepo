@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/income-expense")
 public class IncomeExpenseService {
 
-    private IncomeExpenseDao incomeExpenseDao;
+    private final IncomeExpenseDao incomeExpenseDao;
 
     @Autowired
     public IncomeExpenseService(final IncomeExpenseDao incomeExpenseDao) {

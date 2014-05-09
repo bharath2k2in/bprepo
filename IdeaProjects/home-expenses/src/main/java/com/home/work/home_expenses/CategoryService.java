@@ -19,7 +19,7 @@ import java.util.List;
 @Path("/category")
 public class CategoryService {
 
-    private CategoryDao categoryDao;
+    private final CategoryDao categoryDao;
 
     @Autowired
     public CategoryService(final CategoryDao categoryDao) {
@@ -30,8 +30,6 @@ public class CategoryService {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.TEXT_PLAIN)
     public List<Category> getCategories(final String categoryType) {
-
-        final List<Category> categories = categoryDao.getCategories(categoryType);
-        return categories;
+        return categoryDao.getCategories(categoryType);
     }
 }
