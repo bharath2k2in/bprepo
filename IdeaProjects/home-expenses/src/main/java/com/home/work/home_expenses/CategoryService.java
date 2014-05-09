@@ -1,6 +1,6 @@
 package com.home.work.home_expenses;
 
-import com.home.work.home_expenses.dao.category.CategoryDao;
+import com.home.work.home_expenses.dao.CategoryDao;
 import com.home.work.home_expenses.domain.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -99,13 +99,13 @@ function submitIncomeExpenseDetails() {
                 data: JSON.stringify({amount: amount, description: description, categoryName: categoryName, categoryType: categoryType, transactionDate: transactionDate}),
                 contentType: "application/json",
                 dataType: "script",
-                success: function (data) {
+                success: function () {
                     clearInput();
                     $("#resultMessage").css('color', 'green').text("Record added successfully");
                     $("#resultMessage").fadeOut(3000);
                     setTimeout(updateIncomeExpenseReport, 3000);
                 },
-                error: function (e) {
+                error: function () {
                     $("#resultMessage").css('color', 'red').text("Error occurred while adding record");
                 }
             }

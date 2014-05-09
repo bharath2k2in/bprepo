@@ -1,4 +1,4 @@
-package com.home.work.home_expenses.dao.category;
+package com.home.work.home_expenses.dao;
 
 import com.home.work.home_expenses.domain.Category;
 

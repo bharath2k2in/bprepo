@@ -32,7 +32,7 @@ public class IncomeExpenseDeserializer extends JsonDeserializer<IncomeExpenseDet
             transactionDate = dateFormatter.parse((transactionDateFromRequest.isEmpty()) ? dateFormatter
                     .format(new Date()) : transactionDateFromRequest);
         } catch (ParseException ex) {
-            throw new IllegalArgumentException("Error occurred while parsing date");
+            throw new IllegalArgumentException("Error occurred while parsing date", ex);
         }
 
         final IncomeExpenseDetail incomeExpenseDetail = new IncomeExpenseDetail();
