@@ -3,12 +3,70 @@
     position: relative;
 }
 
-.home .incomeExpense, .report {
+.home .incomeExpense, .report, .home .period, .expense-report {
     background-color: white;
     border-radius: 10px;
     position: relative;
-    width: 435px;
     border: none;
+}
+
+.home .incomeExpense, .report {
+    width: 435px;
+}
+
+.home .period {
+    width: 165px;
+    background-color: lightyellow;
+}
+
+.home .expense-report {
+    width: 860px;
+    position: relative;
+    left: 230px;
+    top: -120px;
+}
+
+.home .expense-report .report-table {
+    width: 100%;
+    border: solid lightblue 3px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.home .period .year-month-lbl, #year, #month, .submit-period, .home .expense-report .report-table .tableHeader {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.home .expense-report .report-table .tableHeader {
+    text-align: center;
+    background-color: lightsteelblue;
+}
+
+.home .expense-report .report-table td {
+    border: 1px solid lightblue;
+}
+
+.home .period .year-month-lbl {
+    padding: 8px 5px;
+    margin-bottom: 5px;
+}
+
+.home .period #year, #month {
+    border-radius: 5px;
+    border: 2px solid lightblue;
+    color: blue;
+    height: 30px;
+}
+
+.home .period .submit-period {
+    padding: 5px;
+    margin: 15px 0px 5px 5px;
+    width: 155px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid lightblue;
 }
 
 .home .incomeExpense {
