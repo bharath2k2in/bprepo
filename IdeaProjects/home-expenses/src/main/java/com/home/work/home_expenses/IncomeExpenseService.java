@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bharath on 28-03-2014.
@@ -36,6 +39,25 @@ public class IncomeExpenseService {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/retrieve")
     public IncomeExpenseResponse retrieveIncomeAndExpense(final String currentOrPreviousMonth) {
-        return incomeExpenseDao.retrieveIncomeAndExpense(currentOrPreviousMonth);
+
+        final List<Map<String, Object>> rows = incomeExpenseDao.retrieveIncomeAndExpense(currentOrPreviousMonth);
+
+        BigDecimal income = new BigDecimal(0);
+        BigDecimal expense = new BigDecimal(0);
+        for (final Map<String, Object> row : rows) {
+            final BigDecimal amount = (BigDecimal) row.get("amount");
+            if (((String) row.get("category_type")).equalsIgnoreCase("Income")) {
+                income = income.add(amount);
+            } else {
+                expense = expense.add(amount);
+            }
+        }
+
+        final IncomeExpenseResponse incomeExpenseResponse = new IncomeExpenseResponse();
+        incomeExpenseResponse.setIncome(income);
+        incomeExpenseResponse.setExpense(expense);
+        incomeExpenseResponse.setDifference(income.subtract(expense));
+
+        return incomeExpenseResponse;
     }
 }

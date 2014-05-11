@@ -37,7 +37,7 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
     }
 
     @Override
-    public IncomeExpenseResponse retrieveIncomeAndExpense(final String currentOrPreviousMonth) {
+    public List<Map<String, Object>> retrieveIncomeAndExpense(final String currentOrPreviousMonth) {
 
         final String currentMonthDetailSql =
                 "select amount, category_type from income_and_expense where " +
@@ -49,25 +49,7 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
         final String sql =
                 (currentOrPreviousMonth.equalsIgnoreCase("current")) ? currentMonthDetailSql : previousMonthDetailSql;
 
-        final List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
-
-        BigDecimal income = new BigDecimal(0);
-        BigDecimal expense = new BigDecimal(0);
-        for (Map<String, Object> row : rows) {
-            final BigDecimal amount = (BigDecimal) row.get("amount");
-            if (((String) row.get("category_type")).equalsIgnoreCase("Income")) {
-                income = income.add(amount);
-            } else {
-                expense = expense.add(amount);
-            }
-        }
-
-        final IncomeExpenseResponse incomeExpenseResponse = new IncomeExpenseResponse();
-        incomeExpenseResponse.setIncome(income);
-        incomeExpenseResponse.setExpense(expense);
-        incomeExpenseResponse.setDifference(income.subtract(expense));
-
-        return incomeExpenseResponse;
+        return jdbcTemplate.queryForList(sql);
     }
 
 }
