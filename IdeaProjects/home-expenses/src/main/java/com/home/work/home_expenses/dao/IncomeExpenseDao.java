@@ -1,7 +1,6 @@
 package com.home.work.home_expenses.dao;
 
 import com.home.work.home_expenses.domain.IncomeExpenseDetail;
-import com.home.work.home_expenses.domain.IncomeExpenseResponse;
 
 import java.util.List;
 import java.util.Map;

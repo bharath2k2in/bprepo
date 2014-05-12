@@ -54,11 +54,10 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
 
     @Override
     public List<IncomeExpenseDetail> retrieveMonthlyIncomeAndExpense(final String month, final String year) {
-        final StringBuffer searchCriteria = new StringBuffer();
-        searchCriteria.append(year).append("-").append(month).append("-%");
+        final String searchCriteria = year + "-" + month + "-%";
 
         final String sql = "select * from income_and_expense where transaction_date like ? order by transaction_date";
-        return jdbcTemplate.query(sql, new Object[]{searchCriteria.toString()}, new IncomeExpenseDetailMapper());
+        return jdbcTemplate.query(sql, new Object[]{searchCriteria}, new IncomeExpenseDetailMapper());
     }
 
     private class IncomeExpenseDetailMapper implements RowMapper<IncomeExpenseDetail> {
