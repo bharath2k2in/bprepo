@@ -15,4 +15,6 @@ public interface IncomeExpenseDao {
     
     public List<Map<String, Object>> retrieveIncomeAndExpense(final String currentOrPreviousMonth);
 
+    public List<IncomeExpenseDetail> retrieveMonthlyIncomeAndExpense(final String month, final String year);
+
 }

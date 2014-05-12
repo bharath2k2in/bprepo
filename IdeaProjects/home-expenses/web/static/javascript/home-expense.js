@@ -26,17 +26,17 @@ $(document).ready(function () {
 
         addBtn.click(submitIncomeExpenseDetails);
         clearBtn.click(clearFields);
-        
+
         updateIncomeExpenseReport();
     }
 );
 
 function updateIncomeExpenseReport() {
-	fillIncomeAndExpense("current");
+    fillIncomeAndExpense("current");
     fillIncomeAndExpense("previous");
 }
 function fillIncomeAndExpense(currentOrPrevious) {
-	$.ajax({
+    $.ajax({
         url: "http://localhost:8080/home-expenses/income-expense/retrieve",
         type: "POST",
         data: currentOrPrevious,
@@ -110,7 +110,7 @@ function submitIncomeExpenseDetails() {
 }
 function clearInput() {
     amountDiv.val("");
-    $("input[name$='categoryType']:checked").each(function(){
+    $("input[name$='categoryType']:checked").each(function () {
         $(this).prop('checked', false);
     });
     descriptionDiv.val("");

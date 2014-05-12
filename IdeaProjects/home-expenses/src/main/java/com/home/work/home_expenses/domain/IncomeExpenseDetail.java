@@ -1,7 +1,9 @@
 package com.home.work.home_expenses.domain;
 
 import com.home.work.home_expenses.deserialize.IncomeExpenseDeserializer;
+import com.sun.istack.Nullable;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,8 +11,12 @@ import java.util.Date;
 /**
  * Created by Bharath on 28-03-2014.
  */
+@JsonSerialize
 @JsonDeserialize(using = IncomeExpenseDeserializer.class)
 public class IncomeExpenseDetail {
+
+    @Nullable
+    private int transactionId;
 
     private BigDecimal amount;
 
@@ -62,10 +68,19 @@ public class IncomeExpenseDetail {
         this.categoryType = categoryType;
     }
 
+    public int getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
+    }
+
     @Override
     public String toString() {
         return "IncomeExpenseDetail{" +
-                "amount=" + amount +
+                "transactionId=" + transactionId +
+                ", amount=" + amount +
                 ", description='" + description + '\'' +
                 ", categoryName='" + categoryName + '\'' +
                 ", transactionDate=" + transactionDate +

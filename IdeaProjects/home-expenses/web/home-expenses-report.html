@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Home Expenses Report</title>
     <script src="static/javascript/jquery-1.11.0.min.js"></script>
-    <script src="static/javascript/home-expense.js"></script>
+    <script src="static/javascript/home-expense-report.js"></script>
     <link rel="stylesheet" type="text/css" href="static/css/home-expense.css">
 </head>
 <body class="home">
@@ -34,10 +34,10 @@
         <option value="11">November</option>
         <option value="12">December</option>
     </select>
-    <input type="button" class="submit-period" value="Submit"/>
+    <input type="button" id="submitPeriod" class="submit-period" value="Submit"/>
 </fieldset>
 <fieldset class="expense-report">
-    <table class="report-table">
+    <table class="report-table" id="reportTable" cellspacing="0">
         <colgroup>
             <col span="1" style="width: 15%;">
             <col span="1" style="width: 45%;">
@@ -51,14 +51,6 @@
             <td>Amount</td>
             <td>E</td>
             <td>D</td>
-        </thead>
-        <tbody class="tableBody">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
         </thead>
     </table>
 </fieldset>

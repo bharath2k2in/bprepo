@@ -1,16 +1,16 @@
 package com.home.work.home_expenses.dao.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
-
 import com.home.work.home_expenses.dao.IncomeExpenseDao;
+import com.home.work.home_expenses.domain.IncomeExpenseDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.home.work.home_expenses.domain.IncomeExpenseDetail;
-import com.home.work.home_expenses.domain.IncomeExpenseResponse;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bharath on 05-04-2014.
@@ -52,4 +52,26 @@ public class IncomeExpenseDaoImpl implements IncomeExpenseDao {
         return jdbcTemplate.queryForList(sql);
     }
 
+    @Override
+    public List<IncomeExpenseDetail> retrieveMonthlyIncomeAndExpense(final String month, final String year) {
+        final StringBuffer searchCriteria = new StringBuffer();
+        searchCriteria.append(year).append("-").append(month).append("-%");
+
+        final String sql = "select * from income_and_expense where transaction_date like ? order by transaction_date";
+        return jdbcTemplate.query(sql, new Object[]{searchCriteria.toString()}, new IncomeExpenseDetailMapper());
+    }
+
+    private class IncomeExpenseDetailMapper implements RowMapper<IncomeExpenseDetail> {
+
+        public IncomeExpenseDetail mapRow(ResultSet rs, int rowNum) throws SQLException {
+            final IncomeExpenseDetail incomeExpenseDetail = new IncomeExpenseDetail();
+            incomeExpenseDetail.setTransactionId(rs.getInt("txn_id"));
+            incomeExpenseDetail.setAmount(rs.getBigDecimal("amount"));
+            incomeExpenseDetail.setDescription(rs.getString("description"));
+            incomeExpenseDetail.setTransactionDate(rs.getDate("transaction_date"));
+            incomeExpenseDetail.setCategoryName(rs.getString("category_name"));
+            incomeExpenseDetail.setCategoryType(rs.getString("category_type"));
+            return incomeExpenseDetail;
+        }
+    }
 }

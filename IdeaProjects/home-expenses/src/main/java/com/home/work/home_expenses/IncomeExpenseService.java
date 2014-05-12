@@ -4,12 +4,15 @@ import com.home.work.home_expenses.dao.IncomeExpenseDao;
 import com.home.work.home_expenses.domain.IncomeExpenseDetail;
 import com.home.work.home_expenses.domain.IncomeExpenseResponse;
 
+import com.home.work.home_expenses.domain.Period;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,5 +62,13 @@ public class IncomeExpenseService {
         incomeExpenseResponse.setDifference(income.subtract(expense));
 
         return incomeExpenseResponse;
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/monthly-report")
+    public List<IncomeExpenseDetail> retrieveMonthlyReport(final Period period) {
+        return incomeExpenseDao.retrieveMonthlyIncomeAndExpense(period.getMonth(), period.getYear());
     }
 }

@@ -28,7 +28,7 @@
 
 .home .expense-report .report-table {
     width: 100%;
-    border: solid lightblue 3px;
+    border: solid lightblue 1px;
     margin-top: 5px;
     border-radius: 5px;
 }
@@ -40,11 +40,12 @@
 
 .home .expense-report .report-table .tableHeader {
     text-align: center;
-    background-color: lightsteelblue;
 }
 
 .home .expense-report .report-table td {
     border: 1px solid lightblue;
+    padding: 0;
+    border-spacing: 0;
 }
 
 .home .period .year-month-lbl {
