@@ -25,39 +25,19 @@ function getMonthlyReport() {
             success: function (data) {
                 if (JSON.parse(data).length > 0) {
                     $("#report-table-entry").empty();
+                    var count = 1;
                     $.each(JSON.parse(data), function (key, value) {
-                        var rowClass = "expense";
+                        var rowClass = "odd";
+                        if(count % 2 === 0) {
+                            rowClass = "even";
+                        }
                         if (value.categoryType === "Income") {
-                            rowClass = "income";
+                            rowClass = rowClass + " income";
                         }
                         var row = $("<tr><td>" + value.transactionDate + "</td><td>" + value.description + "</td><td>" + value.categoryName + "</td><td class='amount'>" + value.amount + "</td></tr>").addClass(rowClass);
                         $("#report-table-entry").append(row);
+                        count++;
                     });
-
-                    var table = $('#reportTable').DataTable({
-                        "bAutoWidth": false,
-                        "aoColumns" : [
-                            { sWidth: '20px' },
-                            { sWidth: '100px' },
-                            { sWidth: '40px' },
-                            { sWidth: '20px' }
-                        ]
-                    });
-
-                    $("#reportTable tfoot th").each(function (i) {
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo($(this).empty())
-                            .on('change', function () {
-                                table.column(i)
-                                    .search($(this).val())
-                                    .draw();
-                            });
-
-                        table.column(i).data().unique().sort().each(function (d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>')
-                        });
-                    });
-
                     $(".expense-report").show();
                 } else {
                     $(".expense-report").hide();

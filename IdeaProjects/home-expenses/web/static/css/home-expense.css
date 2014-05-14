@@ -34,7 +34,7 @@
 .home .expense-report {
     width: 860px;
     position: relative;
-    left: 230px;
+    left: 225px;
     top: -120px;
 }
 
@@ -89,7 +89,7 @@
     color: green;
 }
 
-.home .expense-report .report-table .evenRow {
+.home .expense-report .report-table .even {
     background-color: rgba(211, 211, 211, 0.17);
 }
 
@@ -98,11 +98,16 @@
     margin-bottom: 5px;
 }
 
-.home .period #year, #month {
+.home .period #year, #month, #reportTable_length select, #reportTable tfoot select {
     border-radius: 5px;
     border: 2px solid lightblue;
     color: blue;
     height: 30px;
+    font-style: italic;
+}
+
+#reportTable_length select {
+    margin: 10px 0px;
 }
 
 .home .period .submit-period, .home #no-records-message #no-records {
@@ -257,3 +262,11 @@
 .amountError {
     background-color: lightpink;
 }
+
+
+/*
+#reportTable_length select, #reportTable tfoot select {
+    border-radius: 5px;
+    font-size: 14px;
+    border: solid 2px lightblue;
+}*/
