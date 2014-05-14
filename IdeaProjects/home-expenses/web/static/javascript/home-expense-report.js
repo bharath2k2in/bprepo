@@ -24,13 +24,19 @@ function getMonthlyReport() {
             dataType: "script",
             success: function (data) {
                 if (JSON.parse(data).length > 0) {
+                    $("#report-table-entry").empty();
+                    var count = 1;
                     $.each(JSON.parse(data), function (key, value) {
-                        var rowClass = "expense";
-                        if (value.categoryType === "Income") {
-                            rowClass = "income";
+                        var rowClass = "oddRow";
+                        if(count % 2 === 0) {
+                            rowClass = "evenRow";
                         }
-                        var row = $("<tr><td>" + value.transactionDate + "</td><td>" + value.description + "</td><td>" + value.categoryName + "</td><td class='amount'>" + value.amount + "</td><td class='edit'/><td class='delete'/></tr>").addClass(rowClass);
-                        $("#reportTable").append(row);
+                        if (value.categoryType === "Income") {
+                            rowClass = rowClass + " income";
+                        }
+                        var row = $("<tr><td>" + value.transactionDate + "</td><td>" + value.description + "</td><td>" + value.categoryName + "</td><td class='amount'>" + value.amount + "</td></tr>").addClass(rowClass);
+                        $("#report-table-entry").append(row);
+                        count++;
                     });
                     $(".expense-report").show();
                 } else {

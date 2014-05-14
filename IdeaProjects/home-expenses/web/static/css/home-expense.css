@@ -10,6 +10,10 @@
     border: none;
 }
 
+.home .period {
+    top: 17px;
+}
+
 .home .incomeExpense, .report {
     width: 435px;
 }
@@ -42,7 +46,7 @@
     border-spacing: 0;
 }
 
-.home .period .year-month-lbl, #year, #month, .submit-period, .home .expense-report .report-table thead, .home #no-records-message, #no-records {
+.home .period .year-month-lbl, #year, #month, .submit-period, .home #no-records-message, #no-records {
     font-style: italic;
     font-weight: bold;
 }
@@ -50,18 +54,13 @@
 .home .expense-report .report-table thead {
     text-align: center;
     background-color: lightyellow;
+    color: blue;
+    font-weight: bold;
+    font-variant: small-caps;
 }
 
 .home .expense-report .report-table tbody {
     font-size: 14px;
-}
-
-.home .expense-report .report-table tbody .income {
-    background-color: rgba(144, 238, 144, 0.28);;
-}
-
-.home .expense-report .report-table tbody .expense {
-    background-color: #ffffff;
 }
 
 .home .expense-report .report-table .edit, .delete {
@@ -81,6 +80,17 @@
 .home .expense-report .report-table .amount {
     text-align: right;
     padding-right: 4px;
+    font-weight: bold;
+    font-family: cursive;
+    color: red;
+}
+
+.home .expense-report .report-table .income .amount {
+    color: green;
+}
+
+.home .expense-report .report-table .evenRow {
+    background-color: rgba(211, 211, 211, 0.17);
 }
 
 .home .period .year-month-lbl {
