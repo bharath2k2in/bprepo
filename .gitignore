@@ -1,5 +1,5 @@
-IdeaProjects/home-expenses/.idea/
-IdeaProjects/home-expenses/target/
+.idea/
+target
 *.iml
 *.lock
 *.zip
@@ -7,3 +7,4 @@ IdeaProjects/home-expenses/target/
 *.ini
 *.classpath
 *.project
+.settings
